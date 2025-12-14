@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>甜菜答案词 SweetBeet English</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+</head>
+<body>
+    <!-- 登录界面 -->
+    <div id="loginScreen" class="screen">
+        <div class="login-container">
+            <h1 class="title">🥬 甜菜答案词</h1>
+            <p class="subtitle">SweetBeet English</p>
+            <div class="input-group">
+                <input type="tel" id="phoneInput" placeholder="请输入手机号" maxlength="11">
+                <button id="loginBtn" class="btn primary">开始学习</button>
+            </div>
+            <div id="loginError" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- 主游戏界面 -->
+    <div id="gameScreen" class="screen hidden">
+        <div class="game-container">
+            <div class="header">
+                <div class="progress">
+                    <div class="progress-text">
+                        <span id="currentWord">1</span> / <span id="totalWords">0</span>
+                    </div>
+                    <div class="user-info">
+                        <span id="userPhone"></span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="score">
+                        🍊 <span id="orangeCount">0</span>
+                    </div>
+                    <button id="errorBookBtn" class="btn error-book" title="错词本">
+                        <span class="error-book-icon">📝</span>
+                        <span class="error-book-text">错词本</span>
+                    </button>
+                    <button id="logoutBtn" class="btn secondary" title="登出">
+                        <span>🚪</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="word-input-section">
+                    <input type="text" id="wordInput" placeholder="听音频，输入单词拼写" autocomplete="off">
+                    <button id="submitBtn" class="btn primary">确认</button>
+                </div>
+
+                <div class="control-buttons">
+                    <button id="playBtn" class="btn secondary">🔊 播放</button>
+                    <button id="hintBtn" class="btn secondary">💡 提示</button>
+                </div>
+
+                <div id="hintDisplay" class="hint-display hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 物理引擎画布 -->
+    <canvas id="physicsCanvas"></canvas>
+
+    <!-- 完成界面 -->
+    <div id="completionScreen" class="screen hidden">
+        <div class="completion-container">
+            <h2>🎉 恭喜完成！</h2>
+            <p>你获得了 <span id="finalScore">0</span> 个橘子！</p>
+            <button id="restartBtn" class="btn primary">重新开始</button>
+        </div>
+    </div>
+
+    <script src="words-data-extended.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

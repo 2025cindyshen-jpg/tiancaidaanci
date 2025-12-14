@@ -1,0 +1,808 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #fd79a8 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 屏幕管理 */
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 登录界面 */
+.login-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem 2rem;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    backdrop-filter: blur(10px);
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #2d3436;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #636e72;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input[type="tel"], input[type="text"] {
+    padding: 1rem;
+    border: 3px solid #ddd;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+input[type="tel"]:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: #00b894;
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 184, 148, 0.3);
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.btn:hover:before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn.primary {
+    background: linear-gradient(45deg, #00b894, #00cec9);
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 184, 148, 0.3);
+}
+
+.btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0, 184, 148, 0.4);
+}
+
+.btn.secondary {
+    background: linear-gradient(45deg, #fd79a8, #fdcb6e);
+    color: white;
+    box-shadow: 0 8px 20px rgba(253, 121, 168, 0.3);
+}
+
+.btn.secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(253, 121, 168, 0.4);
+}
+
+.error-message {
+    color: #e17055;
+    margin-top: 1rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.error-message.show {
+    opacity: 1;
+}
+
+/* 游戏界面 */
+.game-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    margin: 2rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(116, 185, 255, 0.1);
+    border-radius: 15px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn.error-book {
+    background: linear-gradient(45deg, #e17055, #fd79a8);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(225, 112, 85, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+}
+
+.btn.error-book:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(225, 112, 85, 0.4);
+}
+
+/* 登出按钮样式 */
+#logoutBtn {
+    background: linear-gradient(45deg, #636e72, #74b9ff);
+    color: white;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(99, 110, 114, 0.3);
+    transition: all 0.3s ease;
+}
+
+#logoutBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 110, 114, 0.4);
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+}
+
+/* 保存指示器样式 */
+.save-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 184, 148, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 1001;
+    animation: slideInRight 0.3s ease-out, fadeOut 0.5s ease-out 1.5s forwards;
+    box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.error-book-icon {
+    font-size: 1.1rem;
+}
+
+.error-book-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.progress {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.progress-text, .score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.user-info {
+    font-size: 0.9rem;
+    color: #636e72;
+    font-weight: normal;
+}
+
+.main-content {
+    text-align: center;
+}
+
+.word-input-section {
+    margin-bottom: 2rem;
+}
+
+.word-input-section input {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    padding: 1.2rem;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.hint-display {
+    background: rgba(253, 203, 110, 0.2);
+    padding: 1rem;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    color: #2d3436;
+    border: 2px dashed #fdcb6e;
+    margin-top: 1rem;
+}
+
+.hint-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hint-meaning {
+    font-size: 1.1rem;
+}
+
+.hint-spelling {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #00b894;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* 错词本样式 */
+.error-book-content {
+    max-width: 600px;
+    max-height: 80vh;
+}
+
+.error-book-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.error-words-list {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+}
+
+.error-word-item {
+    background: rgba(225, 112, 85, 0.1);
+    border: 1px solid rgba(225, 112, 85, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.error-word-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.error-word-spelling {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.error-type {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    background: rgba(225, 112, 85, 0.2);
+    color: #e17055;
+}
+
+.error-word-meaning {
+    font-size: 1.1rem;
+    color: #636e72;
+    margin-bottom: 0.5rem;
+}
+
+.error-word-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #b2bec3;
+}
+
+/* 物理引擎画布 */
+#physicsCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* 完成界面 */
+.completion-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem 2rem;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    backdrop-filter: blur(10px);
+}
+
+.completion-container h2 {
+    font-size: 2rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+.completion-container p {
+    font-size: 1.2rem;
+    color: #636e72;
+    margin-bottom: 2rem;
+}
+
+/* 动画效果 */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.bounce {
+    animation: bounce 0.6s ease-in-out;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .game-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .control-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .control-buttons .btn {
+        width: 200px;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .header-right {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .btn.error-book {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .error-book-text {
+        font-size: 0.75rem;
+    }
+    
+    .error-book-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .error-word-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .error-word-meta {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container, .completion-container {
+        padding: 2rem 1.5rem;
+    }
+    
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    input[type="tel"], input[type="text"] {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+}
+/* 进度条样式 */
+.progress-container {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00b894, #00cec9);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(0, 184, 148, 0.5);
+}
+
+/* 统计信息样式 */
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(116, 185, 255, 0.1);
+    border-radius: 15px;
+    border: 2px solid rgba(116, 185, 255, 0.2);
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #636e72;
+    font-weight: normal;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+/* 历史记录模态框 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+}
+
+.modal-content h3 {
+    text-align: center;
+    color: #2d3436;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.history-item {
+    padding: 1rem;
+    background: rgba(116, 185, 255, 0.1);
+    border-radius: 12px;
+    border-left: 4px solid #74b9ff;
+}
+
+.history-date {
+    font-weight: bold;
+    color: #2d3436;
+    margin-bottom: 0.5rem;
+}
+
+.history-stats {
+    font-size: 0.9rem;
+    color: #636e72;
+}
+
+/* 移除了键盘提示样式，改为纯点击操作以提升用户体验 */
+
+/* 增强的按钮动画 */
+.btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+.btn.primary:active {
+    box-shadow: 0 4px 15px rgba(0, 184, 148, 0.4);
+}
+
+.btn.secondary:active {
+    box-shadow: 0 4px 15px rgba(253, 121, 168, 0.4);
+}
+
+/* 输入框增强效果 */
+input[type="tel"]:invalid, input[type="text"]:invalid {
+    border-color: #e17055;
+    box-shadow: 0 0 10px rgba(225, 112, 85, 0.3);
+}
+
+input[type="tel"]:valid, input[type="text"]:valid {
+    border-color: #00b894;
+}
+
+/* 加载动画 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 成功提示动画 */
+@keyframes success-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(0, 184, 148, 0.6); }
+    100% { transform: scale(1); }
+}
+
+.success-animation {
+    animation: success-pulse 0.6s ease-in-out;
+}
+
+/* 错误提示增强 */
+@keyframes error-shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.error-shake {
+    animation: error-shake 0.6s ease-in-out;
+    border-color: #e17055 !important;
+    box-shadow: 0 0 15px rgba(225, 112, 85, 0.5) !important;
+}
+
+/* 橘子计数器动画 */
+@keyframes orange-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+.orange-count-animation {
+    animation: orange-bounce 0.4s ease-in-out;
+}
+
+/* 完成庆祝效果 */
+@keyframes celebration {
+    0% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(5deg); }
+    50% { transform: scale(1.2) rotate(-5deg); }
+    75% { transform: scale(1.1) rotate(3deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+.celebration-animation {
+    animation: celebration 1s ease-in-out infinite;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    .stats {
+        padding: 1rem;
+    }
+    
+    .stat-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.25rem;
+    }
+    
+    .modal-content {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .history-item {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 移除了键盘提示相关样式 */
+    
+    .stats {
+        gap: 0.75rem;
+    }
+    
+    .stat-value {
+        font-size: 1.1rem;
+    }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #2d3436 0%, #636e72 50%, #74b9ff 100%);
+    }
+    
+    .login-container, .game-container, .completion-container, .modal-content {
+        background: rgba(45, 52, 54, 0.95);
+        color: #ddd;
+    }
+    
+    .title, .stat-value, .history-date {
+        color: #ddd;
+    }
+    
+    .subtitle, .stat-label, .history-stats {
+        color: #b2bec3;
+    }
+    
+    input[type="tel"], input[type="text"] {
+        background: rgba(45, 52, 54, 0.8);
+        color: #ddd;
+        border-color: #636e72;
+    }
+    
+    input[type="tel"]:focus, input[type="text"]:focus {
+        border-color: #74b9ff;
+    }
+}
+
+/* 无障碍优化 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+    .btn.primary {
+        background: #000;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+    
+    .btn.secondary {
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
+    }
+    
+    input[type="tel"], input[type="text"] {
+        border: 3px solid #000;
+        background: #fff;
+        color: #000;
+    }
+}
