@@ -1,0 +1,12 @@
+请将以下音频文件放入此目录：
+
+minivan.mp3
+root.mp3
+frog.mp3
+apple.mp3
+house.mp3
+water.mp3
+book.mp3
+tree.mp3
+
+音频文件应为清晰的英语单词发音，建议格式：MP3，采样率44.1kHz。
